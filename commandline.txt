@@ -1,0 +1,101 @@
+C:\Users\user>cd git_sqlldr
+
+C:\Users\user\git_sqlldr>cd multi_table_loading_sqlldr
+
+C:\Users\user\git_sqlldr\multi_table_loading_sqlldr>sqlplus /nolog
+
+SQL*Plus: Release 11.2.0.2.0 Production on Mon Sep 12 13:13:07 2016
+
+Copyright (c) 1982, 2010, Oracle.  All rights reserved.
+
+SQL> spool spool_cmd_op
+SQL> spool
+currently spooling to spool_cmd_op.LST
+SQL> host
+Microsoft Windows [Version 6.1.7601]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+C:\Users\user\git_sqlldr\multi_table_loading_sqlldr>sqlldr CONTROL=inputfile.ctl
+ LOG=inputfile.log
+Username:hr
+Password:
+
+SQL*Loader: Release 11.2.0.2.0 - Production on Mon Sep 12 13:14:11 2016
+
+Copyright (c) 1982, 2009, Oracle and/or its affiliates.  All rights reserved.
+
+Commit point reached - logical record count 11
+Commit point reached - logical record count 12
+
+C:\Users\user\git_sqlldr\multi_table_loading_sqlldr>exit
+
+SQL> spool spool_cmd_op append
+SQL> spool
+currently spooling to spool_cmd_op.LST
+SQL> conn hr/hr
+Connected.
+SQL> select * from students;
+
+     STDNO SNAME      DATE_ADDM
+---------- ---------- ---------
+      1234 BAKER
+      2234 JOKER
+      2664 YOUNG
+      5321 OTOOLE
+      2134 FARMER
+      2414 LITTLE
+      6542 LEE
+      2849 EDDS
+      4532 PERKINS
+      1244 HUNT
+       123 DOOLITTLE
+
+     STDNO SNAME      DATE_ADDM
+---------- ---------- ---------
+      1453 MACDONALD
+
+12 rows selected.
+
+SQL> select * from std_courses;
+
+     STDNO COU
+---------- ---
+      1234 101
+      2234 777
+      2664 425
+      5321 321
+      2134 236
+      2414 236
+      6542 102
+      4532 40
+      1244 665
+      1234 102
+      2234 888
+
+     STDNO COU
+---------- ---
+      2664 abc
+      5321 55
+      2134 456
+      2414 456
+      6542 321
+      2849 294
+      1244 133
+      1234 103
+      2234 999
+      2664 102
+      5321 40
+
+     STDNO COU
+---------- ---
+      2414 40
+      6542 14
+      2849 40
+      1244 456
+       123 132
+      1453 200
+
+28 rows selected.
+
+SQL> spool off;
+SQL>
