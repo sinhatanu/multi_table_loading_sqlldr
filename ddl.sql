@@ -7,7 +7,7 @@ CREATE TABLE students
 CREATE TABLE std_courses
   (
     stdno    NUMBER(4) NOT NULL,
-    courseno VARCHAR2(3)NOT NULL
+    courseno VARCHAR2(3) NOT NULL
   );
   
   /*Script Output 
