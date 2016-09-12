@@ -1,5 +1,5 @@
  -- Loads STUDENTS records from first 15 characters
-   -- Creates and loads COURSES records for each COURSE listed
+   -- Loads STD_COURSES records for each COURSE listed
    -- for each stdno 
    LOAD DATA
    INFILE 'inputfile.txt'
@@ -11,7 +11,7 @@
    sname    POSITION(6:15)    CHAR
    ) 
      INTO TABLE std_courses
-   -- courses has two columns, both not null: STDNO and COURSENO
+   -- std_courses has two columns, both not null: STDNO and COURSENO
      WHEN courseno != '   '
    (stdno   POSITION(1:4)     INTEGER EXTERNAL,
     courseno   POSITION(16:18)   INTEGER EXTERNAL)   -- 1st course
